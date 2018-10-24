@@ -48,6 +48,7 @@ class App extends Component {
   }
 
   deleteMovie = (id) => {
+    //We need to take in an id specific to each movie so that we can guarantee we are only deleting that movie and not every movie with the same title. So we will pass an id in the parameters
     axios.delete(`http://localhost:3005/api/movies/${id}`).then( response => {
       this.setState({
         movies: response.data
@@ -56,6 +57,7 @@ class App extends Component {
   }
 
   submitEdit = (newValue, id) => {
+    //To submit an edit, we need to pass the id so the movie can be found, and also a body with a new title to update that specific movie to
     axios.put(`http://localhost:3005/api/movies/${id}`, {newValue}).then( response => {
       this.setState({
         movies: response.data
